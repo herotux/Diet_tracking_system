@@ -85,16 +85,9 @@ jobs:
       working-directory: ./flutter_app
       run: flutter test
 
-    - name: Build APK
+    - name: Build Unsigned APK
       working-directory: ./flutter_app
-      run: flutter build apk --release
-      # Note: Keystore details must be provided as secrets in the GitHub repository settings.
-      # Example:
-      # env:
-      #   KEYSTORE_PATH: ${{ secrets.KEYSTORE_PATH }}
-      #   KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-      #   KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      #   KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      run: flutter build apk --release --no-sign
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
