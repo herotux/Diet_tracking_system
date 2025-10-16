@@ -1,0 +1,63 @@
+name: Build Android App and Backend
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      working-directory: ./backend
+      run: pip install -r requirements.txt
+
+    - name: Run Django tests
+      working-directory: ./backend
+      run: python manage.py test
+
+  flutter-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.0'
+
+    - name: Install dependencies
+      working-directory: ./flutter_app
+      run: flutter pub get
+
+    - name: Run Flutter tests
+      working-directory: ./flutter_app
+      run: flutter test
+
+    - name: Build APK
+      working-directory: ./flutter_app
+      run: flutter build apk --release
+      # Note: Keystore details must be provided as secrets in the GitHub repository settings.
+      # Example:
+      # env:
+      #   KEYSTORE_PATH: ${{ secrets.KEYSTORE_PATH }}
+      #   KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      #   KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      #   KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-release
+        path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
