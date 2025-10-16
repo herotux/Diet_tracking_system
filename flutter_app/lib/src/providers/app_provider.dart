@@ -73,4 +73,16 @@ class AppProvider with ChangeNotifier {
       // handle error
     }
   }
+
+  Future<void> submitProgress(int taskId, String status, {String? note}) async {
+    if (_token == null) return;
+    try {
+      await _apiService.submitProgress(_token!, taskId, status, note: note);
+      // Optionally, refetch programs to update progress, or handle locally
+      // For now, we don't refetch to avoid unnecessary network calls
+    } catch (e) {
+      // Re-throw or handle the error appropriately in the UI
+      throw e;
+    }
+  }
 }
