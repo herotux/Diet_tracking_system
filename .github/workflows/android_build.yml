@@ -38,6 +38,18 @@ jobs:
         sudo apt-get update && sudo apt-get install -y libpq-dev gcc
         pip install -r requirements.txt
 
+    - name: Run Migrations
+      working-directory: ./backend
+      run: python manage.py migrate
+      env:
+        DB_NAME: test_db
+        DB_USER: test_user
+        DB_PASSWORD: test_password
+        DB_HOST: 127.0.0.1
+        DB_PORT: 5432
+        DJANGO_SECRET_KEY: 'a-super-secret-key-for-ci'
+        DJANGO_DEBUG: 'False'
+
     - name: Run Django tests
       working-directory: ./backend
       run: python manage.py test
