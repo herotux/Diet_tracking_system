@@ -3,10 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app/src/providers/app_provider.dart';
 import 'package:flutter_app/main.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   testWidgets('Renders LoginScreen on startup', (WidgetTester tester) async {
+    // Set up mock initial values for SharedPreferences before the test runs.
+    SharedPreferences.setMockInitialValues({});
+
     // Build our app and trigger a frame.
     await tester.pumpWidget(
       ChangeNotifierProvider(
@@ -15,15 +18,11 @@ void main() {
       ),
     );
 
-    // Wait for localizations to load
-    await tester.pump();
+    // pumpAndSettle waits for all animations and async tasks to complete.
+    await tester.pumpAndSettle();
 
     // Verify that the LoginScreen is shown.
     expect(find.byType(TextField), findsNWidgets(2)); // Username and password fields
-
-    // Find the login button text based on locale
-    final BuildContext context = tester.element(find.byType(MyApp));
-    final loginButtonText = AppLocalizations.of(context)!.login;
-    expect(find.widgetWithText(ElevatedButton, loginButtonText), findsOneWidget);
+    expect(find.text('Login'), findsOneWidget); // Check for the default English text.
   });
 }
