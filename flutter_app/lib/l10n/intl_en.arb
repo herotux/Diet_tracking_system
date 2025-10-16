@@ -1,0 +1,15 @@
+{
+  "login": "Login",
+  "username": "Username",
+  "password": "Password",
+  "loginFailed": "Login Failed",
+  "myPrograms": "My Programs",
+  "day": "Day",
+  "status": "Status",
+  "progressSubmitted": "Progress Submitted",
+  "submissionFailed": "Submission Failed",
+  "addNote": "Add Note",
+  "optionalNote": "Optional Note...",
+  "cancel": "Cancel",
+  "submit": "Submit"
+}

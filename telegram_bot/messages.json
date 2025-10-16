@@ -1,0 +1,41 @@
+{
+  "en": {
+    "start": "Hello! I'm your diet/exercise assistant bot. Link your account with /link <username> <password>. Use /setlang to change language.",
+    "link_success": "Successfully linked your account ✅",
+    "link_fail": "Link failed. Make sure your credentials are correct.",
+    "not_linked": "You are not linked to an account. Use /link <username> <password>.",
+    "no_programs": "No programs assigned to you.",
+    "no_tasks_today": "No tasks for today 🎉",
+    "today_header": "Your tasks for today:",
+    "fetch_fail": "Failed to fetch today's plan.",
+    "complete_usage": "Usage: /complete <item_id> <COMPLETED|PARTIALLY_COMPLETED|NOT_COMPLETED> [note]",
+    "update_success": "Updated ✅",
+    "update_fail": "Failed to update item."
+  },
+  "fa": {
+    "start": "سلام! من ربات دستیار رژیم/ورزش شما هستم. حساب خود را با /link <نام کاربری> <رمز عبور> متصل کنید. برای تغییر زبان از /setlang استفاده کنید.",
+    "link_success": "حساب شما با موفقیت متصل شد ✅",
+    "link_fail": "اتصال ناموفق بود. مطمئن شوید اطلاعات شما صحیح است.",
+    "not_linked": "شما به حسابی متصل نیستید. از /link <نام کاربری> <رمز عبور> استفاده کنید.",
+    "no_programs": "هیچ برنامه ای به شما اختصاص داده نشده است.",
+    "no_tasks_today": "امروز هیچ وظیفه ای ندارید 🎉",
+    "today_header": "وظایف امروز شما:",
+    "fetch_fail": "دریافت برنامه امروز ناموفق بود.",
+    "complete_usage": "نحوه استفاده: /complete <شناسه مورد> <COMPLETED|PARTIALLY_COMPLETED|NOT_COMPLETED> [یادداشت]",
+    "update_success": "به روز شد ✅",
+    "update_fail": "به روز رسانی مورد ناموفق بود."
+  },
+  "ku": {
+    "start": "سڵاو! من ڕۆبۆتی یاریدەدەری پارێزی/وەرزشی تۆم. هەژمارەکەت بە /link <ناوی بەکارهێنەر> <وشەی نهێنی> ببەستەوە. بۆ گۆڕینی زمان /setlang بەکاربێنە.",
+    "link_success": "هەژمارەکەت بە سەرکەوتوویی بەسترایەوە ✅",
+    "link_fail": "بەستنەوە سەرکەوتوو نەبوو. دڵنیابە لە دروستی زانیارییەکانت.",
+    "not_linked": "تۆ بە هیچ هەژمارێکەوە نەبەستراویتەوە. /link <ناوی بەکارهێنەر> <وشەی نهێنی> بەکاربێنە.",
+    "no_programs": "هیچ بەرنامەیەکت بۆ دیاری نەکراوە.",
+    "no_tasks_today": "ئەمڕۆ هیچ ئەرکێکت نییە 🎉",
+    "today_header": "ئەرکەکانی ئەمڕۆت:",
+    "fetch_fail": "وەرگرتنی پلانی ئەمڕۆ سەرکەوتوو نەبوو.",
+    "complete_usage": "بەکارهێنان: /complete <ناسنامەی ئایتێم> <COMPLETED|PARTIALLY_COMPLETED|NOT_COMPLETED> [تێبینی]",
+    "update_success": "نوێکرایەوە ✅",
+    "update_fail": "نوێکردنەوەی ئایتێم سەرکەوتوو نەبوو."
+  }
+}

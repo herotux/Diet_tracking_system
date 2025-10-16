@@ -1,0 +1,15 @@
+{
+  "login": "ورود",
+  "username": "نام کاربری",
+  "password": "رمز عبور",
+  "loginFailed": "ورود ناموفق بود",
+  "myPrograms": "برنامه های من",
+  "day": "روز",
+  "status": "وضعیت",
+  "progressSubmitted": "پیشرفت ثبت شد",
+  "submissionFailed": "ثبت ناموفق بود",
+  "addNote": "افزودن یادداشت",
+  "optionalNote": "یادداشت اختیاری...",
+  "cancel": "لغو",
+  "submit": "ثبت"
+}
