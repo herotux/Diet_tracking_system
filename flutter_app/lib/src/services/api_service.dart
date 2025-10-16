@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:diet_tracker_app/src/models/program.dart';
-import 'package:diet_tracker_app/src/models/progress.dart';
+import 'package:flutter_app/src/models/program.dart';
+import 'package:flutter_app/src/models/progress.dart';
 
 class ApiService {
   final String _baseUrl = 'http://10.0.2.2:8000/api';

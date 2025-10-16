@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:diet_tracker_app/src/models/program.dart';
+import 'package:flutter_app/src/models/program.dart';
 
 class ProgressChart extends StatelessWidget {
   final List<Program> programs;
@@ -17,7 +17,7 @@ class ProgressChart extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text("Progress Analytics", style: Theme.of(context).textTheme.headline6),
+            Text("Progress Analytics", style: Theme.of(context).textTheme.titleLarge),
             SizedBox(height: 20),
             SizedBox(
               height: 200,
@@ -26,22 +26,32 @@ class ProgressChart extends StatelessWidget {
                   barGroups: _createSampleData(),
                   titlesData: FlTitlesData(
                     show: true,
-                    bottomTitles: SideTitles(
-                      showTitles: true,
-                      getTextStyles: (context, value) => const TextStyle(color: Colors.black, fontSize: 10),
-                      margin: 10,
-                      getTitles: (double value) {
-                        switch (value.toInt()) {
-                          case 0:
-                            return 'Program 1';
-                          case 1:
-                            return 'Program 2';
-                          default:
-                            return '';
-                        }
-                      },
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: (double value, TitleMeta meta) {
+                          const style = TextStyle(
+                            color: Colors.black,
+                            fontSize: 10,
+                          );
+                          String text;
+                          if (value.toInt() < programs.length) {
+                            text = programs[value.toInt()].name;
+                          } else {
+                            text = '';
+                          }
+                          return SideTitleWidget(
+                            axisSide: meta.axisSide,
+                            space: 4.0,
+                            child: Text(text, style: style, overflow: TextOverflow.ellipsis),
+                          );
+                        },
+                        reservedSize: 40,
+                      ),
                     ),
-                    leftTitles: SideTitles(showTitles: true),
+                    leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true)),
+                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
                   ),
                 ),
               ),
@@ -57,7 +67,7 @@ class ProgressChart extends StatelessWidget {
       return BarChartGroupData(
         x: index,
         barRods: [
-          BarChartRodData(y: (index + 1) * 5, colors: [Colors.blue])
+          BarChartRodData(toY: (index + 1) * 5, color: Colors.blue)
         ],
       );
     });

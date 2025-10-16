@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:diet_tracker_app/src/models/program.dart';
-import 'package:diet_tracker_app/src/providers/app_provider.dart';
+import 'package:flutter_app/src/models/program.dart';
+import 'package:flutter_app/src/providers/app_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TaskCard extends StatefulWidget {

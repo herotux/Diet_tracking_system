@@ -77,6 +77,10 @@ jobs:
       working-directory: ./flutter_app
       run: flutter pub get
 
+    - name: Generate localization files
+      working-directory: ./flutter_app
+      run: flutter gen-l10n
+
     - name: Run Flutter tests
       working-directory: ./flutter_app
       run: flutter test

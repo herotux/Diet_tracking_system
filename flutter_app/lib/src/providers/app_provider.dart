@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:diet_tracker_app/src/services/api_service.dart';
-import 'package:diet_tracker_app/src/models/program.dart';
-import 'package:diet_tracker_app/src/models/user.dart';
+import 'package:flutter_app/src/services/api_service.dart';
+import 'package:flutter_app/src/models/program.dart';
+import 'package:flutter_app/src/models/user.dart';
 
 class AppProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
