@@ -4,7 +4,7 @@ import 'package:flutter_app/src/models/program.dart';
 import 'package:flutter_app/src/models/progress.dart';
 
 class ApiService {
-  final String _baseUrl = 'http://10.0.2.2:8000/api';
+  final String _baseUrl = 'https://freetux.pythonanywhere.com/api';
 
   Future<String> login(String username, String password) async {
     final response = await http.post(
