@@ -9,28 +9,52 @@ on:
 jobs:
   backend-test:
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:13
+        env:
+          POSTGRES_DB: test_db
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
     - name: Install dependencies
       working-directory: ./backend
-      run: pip install -r requirements.txt
+      run: |
+        sudo apt-get update && sudo apt-get install -y libpq-dev gcc
+        pip install -r requirements.txt
 
     - name: Run Django tests
       working-directory: ./backend
       run: python manage.py test
+      env:
+        DB_NAME: test_db
+        DB_USER: test_user
+        DB_PASSWORD: test_password
+        DB_HOST: 127.0.0.1
+        DB_PORT: 5432
+        DJANGO_SECRET_KEY: 'a-super-secret-key-for-ci'
+        DJANGO_DEBUG: 'False'
 
   flutter-build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
