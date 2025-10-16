@@ -57,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
             _isLoading
                 ? CircularProgressIndicator()
                 : ElevatedButton(
+                    key: const ValueKey('loginButton'),
                     onPressed: _login,
                     child: Text(AppLocalizations.of(context)!.login),
                   ),

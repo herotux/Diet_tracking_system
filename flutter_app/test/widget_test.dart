@@ -21,8 +21,8 @@ void main() {
     // pumpAndSettle waits for all animations and async tasks to complete.
     await tester.pumpAndSettle();
 
-    // Verify that the LoginScreen is shown.
+    // Verify that the LoginScreen is shown using Keys, which is more robust.
     expect(find.byType(TextField), findsNWidgets(2)); // Username and password fields
-    expect(find.text('Login'), findsOneWidget); // Check for the default English text.
+    expect(find.byKey(const ValueKey('loginButton')), findsOneWidget); // Find the button by its key.
   });
 }
