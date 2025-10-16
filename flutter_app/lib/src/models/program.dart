@@ -1,4 +1,4 @@
-import 'package:diet_tracker_app/src/models/user.dart';
+import 'package:flutter_app/src/models/user.dart';
 
 class Task {
   final int id;

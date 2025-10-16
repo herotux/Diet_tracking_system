@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:diet_tracker_app/src/services/api_service.dart';
-import 'package:diet_tracker_app/src/models/program.dart';
-import 'package:diet_tracker_app/src/models/user.dart';
+import 'package:flutter_app/src/services/api_service.dart';
+import 'package:flutter_app/src/models/program.dart';
+import 'package:flutter_app/src/models/user.dart';
 
 class AppProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
@@ -71,6 +71,18 @@ class AppProvider with ChangeNotifier {
       notifyListeners();
     } catch (e) {
       // handle error
+    }
+  }
+
+  Future<void> submitProgress(int taskId, String status, {String? note}) async {
+    if (_token == null) return;
+    try {
+      await _apiService.submitProgress(_token!, taskId, status, note: note);
+      // Optionally, refetch programs to update progress, or handle locally
+      // For now, we don't refetch to avoid unnecessary network calls
+    } catch (e) {
+      // Re-throw or handle the error appropriately in the UI
+      throw e;
     }
   }
 }
