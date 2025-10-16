@@ -8,7 +8,7 @@ class ApiService {
 
   Future<String> login(String username, String password) async {
     final response = await http.post(
-      Uri.parse('$_baseUrl/auth/login/'),
+      Uri.parse('/auth/login/'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'username': username, 'password': password}),
     );
@@ -22,7 +22,7 @@ class ApiService {
 
   Future<List<Program>> getPrograms(String token) async {
     final response = await http.get(
-      Uri.parse('$_baseUrl/programs/'),
+      Uri.parse('/programs/'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
@@ -36,7 +36,7 @@ class ApiService {
 
   Future<Progress> submitProgress(String token, int taskId, String status, {String? note}) async {
     final response = await http.post(
-      Uri.parse('$_baseUrl/progress/'),
+      Uri.parse('/progress/'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
