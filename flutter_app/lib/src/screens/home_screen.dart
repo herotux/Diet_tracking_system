@@ -31,27 +31,42 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: appProvider.programs.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : ListView(
-              children: [
-                ProgressChart(programs: appProvider.programs),
-                ...appProvider.programs.map((program) {
-                  return ListTile(
-                    title: Text(program.name),
-                    subtitle: Text(program.description),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProgramScreen(program: program),
-                        ),
-                      );
-                    },
-                  );
-                }).toList(),
-              ],
-            ),
+      body: _buildBody(appProvider),
+    );
+  }
+
+  Widget _buildBody(AppProvider appProvider) {
+    if (appProvider.isLoadingPrograms) {
+      return Center(child: CircularProgressIndicator());
+    }
+
+    if (appProvider.programs.isEmpty) {
+      return Center(
+        child: Text(
+          AppLocalizations.of(context)!.noProgramsFound,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      );
+    }
+
+    return ListView(
+      children: [
+        ProgressChart(programs: appProvider.programs),
+        ...appProvider.programs.map((program) {
+          return ListTile(
+            title: Text(program.name),
+            subtitle: Text(program.description),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProgramScreen(program: program),
+                ),
+              );
+            },
+          );
+        }).toList(),
+      ],
     );
   }
 }

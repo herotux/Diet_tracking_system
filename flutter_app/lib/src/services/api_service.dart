@@ -16,9 +16,6 @@ class ApiService {
     if (response.statusCode == 200) {
       return jsonDecode(response.body)['access'];
     } else {
-      // Log the error response from the server
-      print('Login failed with status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
       throw Exception('Failed to login');
     }
   }

@@ -11,11 +11,13 @@ class AppProvider with ChangeNotifier {
   User? _user;
   List<Program> _programs = [];
   bool _isAuthenticated = false;
+  bool _isLoadingPrograms = false;
 
   Locale get locale => _locale;
   bool get isAuthenticated => _isAuthenticated;
   User? get user => _user;
   List<Program> get programs => _programs;
+  bool get isLoadingPrograms => _isLoadingPrograms;
 
   AppProvider() {
     _loadPrefs();
@@ -66,11 +68,15 @@ class AppProvider with ChangeNotifier {
   }
 
   Future<void> fetchPrograms() async {
+    _isLoadingPrograms = true;
+    notifyListeners();
     try {
       _programs = await _apiService.getPrograms(_token!);
-      notifyListeners();
     } catch (e) {
       // handle error
+    } finally {
+      _isLoadingPrograms = false;
+      notifyListeners();
     }
   }
 
