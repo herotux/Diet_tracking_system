@@ -28,7 +28,6 @@ class AppProvider with ChangeNotifier {
     _token = prefs.getString('token');
     if (_token != null) {
       _isAuthenticated = true;
-      // You might want to fetch user data here as well
     }
     final langCode = prefs.getString('language_code') ?? 'fa';
     _locale = Locale(langCode);
