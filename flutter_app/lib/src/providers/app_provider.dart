@@ -6,16 +6,18 @@ import 'package:flutter_app/src/models/user.dart';
 
 class AppProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
-  Locale _locale = const Locale('en');
+  Locale _locale = const Locale('fa');
   String? _token;
   User? _user;
   List<Program> _programs = [];
   bool _isAuthenticated = false;
+  bool _isLoadingPrograms = false;
 
   Locale get locale => _locale;
   bool get isAuthenticated => _isAuthenticated;
   User? get user => _user;
   List<Program> get programs => _programs;
+  bool get isLoadingPrograms => _isLoadingPrograms;
 
   AppProvider() {
     _loadPrefs();
@@ -26,9 +28,8 @@ class AppProvider with ChangeNotifier {
     _token = prefs.getString('token');
     if (_token != null) {
       _isAuthenticated = true;
-      // You might want to fetch user data here as well
     }
-    final langCode = prefs.getString('language_code') ?? 'en';
+    final langCode = prefs.getString('language_code') ?? 'fa';
     _locale = Locale(langCode);
     notifyListeners();
   }
@@ -66,11 +67,15 @@ class AppProvider with ChangeNotifier {
   }
 
   Future<void> fetchPrograms() async {
+    _isLoadingPrograms = true;
+    notifyListeners();
     try {
       _programs = await _apiService.getPrograms(_token!);
-      notifyListeners();
     } catch (e) {
       // handle error
+    } finally {
+      _isLoadingPrograms = false;
+      notifyListeners();
     }
   }
 

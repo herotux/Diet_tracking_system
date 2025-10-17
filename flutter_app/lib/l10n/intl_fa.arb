@@ -18,5 +18,7 @@
     "partiallyCompleted": "تاحدودی انجام شده",
     "notCompleted": "انجام نشده",
     "noProgramsAssigned": "هنوز هیچ برنامه‌ای به شما اختصاص داده نشده است.",
-    "loading": "در حال بارگذاری..."
+    "loading": "در حال بارگذاری...",
+    "settings": "تنظیمات",
+    "language": "زبان"
 }
