@@ -91,7 +91,7 @@ jobs:
 
     - name: Build APK
       working-directory: ./flutter_app
-      run: flutter build apk --release
+      run: flutter build apk --debug
       # Note: Keystore details must be provided as secrets in the GitHub repository settings.
       # Example:
       # env:
