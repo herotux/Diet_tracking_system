@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (appProvider.programs.isEmpty) {
       return Center(
         child: Text(
-          AppLocalizations.of(context)!.noProgramsFound,
+          AppLocalizations.of(context)!.noProgramsAssigned,
           style: Theme.of(context).textTheme.headline6,
         ),
       );
