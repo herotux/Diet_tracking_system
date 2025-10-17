@@ -18,6 +18,9 @@ void main() {
       ),
     );
 
+    // Wait for all asynchronous operations like _loadPrefs to complete.
+    await tester.pumpAndSettle();
+
     // Verify that the LoginScreen is shown.
     expect(find.byType(TextField), findsNWidgets(2)); // Username and password fields
     expect(find.widgetWithText(ElevatedButton, 'Login'), findsOneWidget);
