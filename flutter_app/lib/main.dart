@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           title: 'Diet & Fitness Tracker',
           theme: ThemeData(
             primarySwatch: Colors.blue,
-            fontFamily: appProvider.locale.languageCode == 'fa' || appProvider.locale.languageCode == 'ku' ? 'Vazir' : null,
+            fontFamily: 'Vazirmatn',
           ),
           locale: appProvider.locale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,

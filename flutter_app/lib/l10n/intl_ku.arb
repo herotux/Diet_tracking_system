@@ -18,5 +18,7 @@
     "partiallyCompleted": "بەشێکی تەواوکرا",
     "notCompleted": "تەواونەکرا",
     "noProgramsAssigned": "هێشتا هیچ بەرنامەیەکت بۆ دیاری نەکراوە.",
-    "loading": "بارکردن..."
+    "loading": "بارکردن...",
+    "settings": "ڕێکخستنەکان",
+    "language": "زمان"
 }

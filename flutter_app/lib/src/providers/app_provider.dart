@@ -6,7 +6,7 @@ import 'package:flutter_app/src/models/user.dart';
 
 class AppProvider with ChangeNotifier {
   final ApiService _apiService = ApiService();
-  Locale _locale = const Locale('en');
+  Locale _locale = const Locale('fa');
   String? _token;
   User? _user;
   List<Program> _programs = [];
@@ -30,7 +30,7 @@ class AppProvider with ChangeNotifier {
       _isAuthenticated = true;
       // You might want to fetch user data here as well
     }
-    final langCode = prefs.getString('language_code') ?? 'en';
+    final langCode = prefs.getString('language_code') ?? 'fa';
     _locale = Locale(langCode);
     notifyListeners();
   }

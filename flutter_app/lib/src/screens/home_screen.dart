@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app/src/providers/app_provider.dart';
 import 'package:flutter_app/src/screens/program_screen.dart';
+import 'package:flutter_app/src/screens/settings_screen.dart';
 import 'package:flutter_app/src/widgets/progress_chart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -26,9 +27,18 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(AppLocalizations.of(context)!.myPrograms),
         actions: [
           IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
+              );
+            },
+          ),
+          IconButton(
             icon: Icon(Icons.logout),
             onPressed: () => appProvider.logout(),
-          )
+          ),
         ],
       ),
       body: _buildBody(appProvider),

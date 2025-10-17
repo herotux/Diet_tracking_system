@@ -18,5 +18,7 @@
     "partiallyCompleted": "Partially Completed",
     "notCompleted": "Not Completed",
     "noProgramsAssigned": "No programs have been assigned to you yet.",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "settings": "Settings",
+    "language": "Language"
 }
