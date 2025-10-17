@@ -87,7 +87,7 @@ jobs:
 
     - name: Build APK
       working-directory: ./flutter_app
-      run: flutter build apk --release
+      run: flutter build apk --debug
       # Note: Keystore details must be provided as secrets in the GitHub repository settings.
       # Example:
       # env:
@@ -99,5 +99,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: app-release
-        path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
+        name: app-debug
+        path: flutter_app/build/app/outputs/flutter-apk/app-debug.apk
