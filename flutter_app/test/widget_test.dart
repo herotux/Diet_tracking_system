@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app/src/providers/app_provider.dart';
 import 'package:flutter_app/main.dart';
+import 'package:flutter_app/src/models/program.dart';
+import 'package:flutter_app/src/models/user.dart';
 
 // A mock AppProvider for testing purposes
 class MockAppProvider extends ChangeNotifier implements AppProvider {
