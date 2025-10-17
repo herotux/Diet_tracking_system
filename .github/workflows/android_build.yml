@@ -73,6 +73,10 @@ jobs:
       with:
         flutter-version: '3.7.0'
 
+    - name: Clean Flutter project
+      working-directory: ./flutter_app
+      run: flutter clean
+
     - name: Install dependencies
       working-directory: ./flutter_app
       run: flutter pub get
@@ -87,7 +91,7 @@ jobs:
 
     - name: Build APK
       working-directory: ./flutter_app
-      run: flutter build apk --release
+      run: flutter build apk --debug
       # Note: Keystore details must be provided as secrets in the GitHub repository settings.
       # Example:
       # env:
